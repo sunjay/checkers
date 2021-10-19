@@ -11,6 +11,12 @@ pub enum Direction {
     NW,
 }
 
+impl Direction {
+    pub const ALL: &'static [Self] = &[Self::NE, Self::SE, Self::SW, Self::NW];
+    pub const NORTH: &'static [Self] = &[Self::NE, Self::NW];
+    pub const SOUTH: &'static [Self] = &[Self::SE, Self::SW];
+}
+
 /// A row and column position on the board
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Pos {

@@ -7,12 +7,30 @@ pub enum Piece {
     O,
 }
 
+/// An occupied tile of the board
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Tile {
+    /// The piece residing on this tile
+    pub piece: Piece,
+    /// true if the piece on this tile has been promoted to a king
+    pub is_king: bool,
+}
+
+impl Tile {
+    const fn new(piece: Piece) -> Self {
+        Self {
+            piece,
+            is_king: false,
+        }
+    }
+}
+
 /// The tiles of a checkers board
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub struct Board([[Option<Piece>; BOARD_SIZE]; BOARD_SIZE]);
+pub struct Board([[Option<Tile>; BOARD_SIZE]; BOARD_SIZE]);
 
-const P_X: Option<Piece> = Some(Piece::X);
-const P_O: Option<Piece> = Some(Piece::O);
+const P_X: Option<Tile> = Some(Tile::new(Piece::X));
+const P_O: Option<Tile> = Some(Tile::new(Piece::O));
 
 /// The default setup of the checkers board
 ///

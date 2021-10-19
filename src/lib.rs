@@ -52,6 +52,13 @@ impl Checkers {
     /// Note that since jumps are forced, if any jump moves are available, only those will be returned
     pub fn valid_moves(&self) -> Vec<Move> {
         let valid = Vec::new();
+
+        // Movement directions for non-king pieces
+        let movement_directions = match self.current_piece {
+            Piece::X => Direction::NORTH,
+            Piece::O => Direction::SOUTH,
+        };
+
         valid
     }
 }
